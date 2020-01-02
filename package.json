@@ -26,6 +26,7 @@
     "@mendix/pluggable-widgets-tools": "^8.3.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.8.2",
     "big.js": "^5.2.2",
     "classnames": "^2.2.6"
   }

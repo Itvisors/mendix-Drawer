@@ -1,13 +1,47 @@
 import { Component, createElement } from "react";
 import { hot } from "react-hot-loader/root";
 
-import { HelloWorldSample } from "./components/HelloWorldSample";
-import "./ui/Drawer.css";
+import Drawer from '@material-ui/core/Drawer';
 
-class Drawer extends Component {
+class DrawerUI extends Component {
+    state = { showDrawer: false };
+
+    componentDidUpdate () {
+      if (this.state.showDrawer !== this.props.showDrawer.value) {
+        this.setState({
+          showDrawer: this.props.showDrawer.value,
+        });
+      }
+    }
+
+    onCloseNow = () => {
+      if (this.props.closeOnClickOutside) {
+        this.setState({
+          showDrawer: false,
+        });
+        if (this.props.showDrawer.readOnly) {
+          console.warn("User has no rights to change the attribute to close the drawer")
+        }
+        this.props.showDrawer.setValue(false);
+      }
+      if (this.props.onCloseAction && this.props.onCloseAction.canExecute) {
+        this.props.onCloseAction.execute();
+      }
+    };
     render() {
-        return <HelloWorldSample sampleText={this.props.sampleText} />;
+      return (
+        <div>
+          <Drawer
+            onClose={this.onCloseNow}
+            open={this.state.showDrawer}
+            anchor={this.props.anchor}
+            transitionDuration= {{enter:this.props.transitionDurationEnter,exit:this.props.transitionDurationClose}}
+          >
+            {this.props.content}
+          </Drawer>
+        </div>
+      );
     }
 }
 
-export default hot(Drawer);
+export default hot(DrawerUI);

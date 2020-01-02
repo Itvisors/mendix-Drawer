@@ -8,10 +8,44 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
+            <property key="content" type="widgets" required="false">
+                <caption>Content</caption>
+                <description>Widgets to place inside.</description>
             </property>
+            <property key="showDrawer" type="attribute">
+                <caption>Show Drawer</caption>
+                <description>Attribute used to determine whether the drawer has to be shown</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="closeOnClickOutside" type="boolean" required="true" defaultValue="false">
+                <caption>Close on click</caption>
+                <description>Wheteher or not to close the drawer when the user clicks anywhere on the page outside the drawer.</description>
+            </property>
+            <property key="onCloseAction" type="action" required="false">
+                <caption>On click action</caption>
+                <description>Action to trigger when the user clicks anywhere on the screen outside the drawer.</description>
+            </property>
+            <property key="transitionDurationEnter" type="integer" required="true" defaultValue="200">
+                <caption>Transition duration enter</caption>
+                <description>Time (in ms) it will take to open the drawer.</description>
+            </property>
+            <property key="transitionDurationClose" type="integer" required="true" defaultValue="200">
+                <caption>Transition duration close</caption>
+                <description>Time (in ms) it will take to close the drawer.</description>
+            </property>
+            <property key="anchor" type="enumeration" required="true" defaultValue="right">
+                <caption>Anchor</caption>
+                <description>Where the drawer will be shown</description>
+                <enumerationValues>
+                    <enumerationValue key="left">Left</enumerationValue>
+                    <enumerationValue key="right">Right</enumerationValue>
+                    <enumerationValue key="top">Top</enumerationValue>
+                    <enumerationValue key="bottom">Bottom</enumerationValue>
+                </enumerationValues>
+            </property>
+
         </propertyGroup>
     </properties>
 </widget>
