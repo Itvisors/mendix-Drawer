@@ -1,5 +1,5 @@
 ## Drawer
-A panel that pops over a side of the screen, based on https://material-ui.com/components/drawers/. Can be used to e.g. edit content of the context object or place extra information.
+A panel that slides in on a side of the screen, based on https://material-ui.com/components/drawers/. Can be used to e.g. edit content of the context object or place extra information.
 Note that no data views, listviews or template grids can be used within the content.
 
 ## Features
