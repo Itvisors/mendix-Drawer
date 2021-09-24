@@ -1,9 +1,8 @@
 import { Component, createElement } from "react";
-import { hot } from "react-hot-loader/root";
 
 import Drawer from '@material-ui/core/Drawer';
 
-class DrawerUI extends Component {
+export default class DrawerUI extends Component {
     state = { showDrawer: false };
 
     componentDidUpdate () {
@@ -43,5 +42,3 @@ class DrawerUI extends Component {
       );
     }
 }
-
-export default hot(DrawerUI);
