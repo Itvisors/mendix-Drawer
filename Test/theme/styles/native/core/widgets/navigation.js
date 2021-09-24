@@ -1,48 +1,17 @@
-import { Platform }                  from "react-native";
 import { font, navigation, spacing } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
-    TopBar / BottomBar / ProgressOverlay
+==========================================================================
+    BottomBar / ProgressOverlay
 
-    Default Class For Mendix TopBar, BottomBar and ProgressOverlay
+    Default Class For Mendix BottomBar and ProgressOverlay
 ========================================================================== */
-
 export const navigationStyle = {
-    statusBar: {
-        // Android only
-        backgroundColor: navigation.statusBar.backgroundColor,
-        barStyle: navigation.statusBar.barStyle,
-    },
-    topBar: {
-        container: {
-            // All ViewStyle properties are allowed
-            backgroundColor: navigation.topBar.backgroundColor,
-        },
-        title: {
-            // All TextStyle properties are allowed
-            color: navigation.topBar.titleColor,
-            fontSize: navigation.topBar.titleFontSize,
-            fontFamily: font.family,
-            fontWeight: Platform.select({ ios: font.weightBold, android: font.weightNormal }),
-        },
-        backButtonText: {
-            // All TextStyle properties are allowed
-            color: navigation.topBar.backButtonColor,
-            fontFamily: font.family,
-        },
-        backButtonIcon: {
-            // All ImageStyle properties are allowed
-            tintColor: navigation.topBar.backButtonColor,
-        },
-        // backButtonIconSource: {},
-    },
     bottomBar: {
         container: {
             // All ViewStyle properties are allowed
@@ -53,7 +22,6 @@ export const navigationStyle = {
             color: navigation.bottomBar.color,
             fontFamily: font.family,
             fontSize: navigation.bottomBar.fontSize,
-
         },
         selectedLabel: {
             // All TextStyle properties are allowed
@@ -64,12 +32,12 @@ export const navigationStyle = {
         icon: {
             // All TextStyle properties are allowed
             color: navigation.bottomBar.color,
-            fontSize: navigation.bottomBar.fontSize,
+            fontSize: navigation.bottomBar.iconSize,
         },
         selectedIcon: {
             // All TextStyle properties are allowed
             color: navigation.bottomBar.selectedIconColor,
-            fontSize: navigation.bottomBar.fontSize,
+            fontSize: navigation.bottomBar.iconSize,
         },
     },
     progressOverlay: {
@@ -79,7 +47,18 @@ export const navigationStyle = {
         },
         container: {
             // All ViewStyle properties are allowed
-
+            backgroundColor: navigation.progressOverlay.containerBackgroundColor,
+            paddingHorizontal: spacing.largest,
+            paddingVertical: spacing.large,
+            borderRadius: navigation.progressOverlay.borderRadius,
+            elevation: navigation.progressOverlay.elevation,
+            shadowColor: navigation.progressOverlay.shadowColor,
+            shadowOpacity: navigation.progressOverlay.shadowOpacity,
+            shadowRadius: navigation.progressOverlay.shadowRadius,
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
         },
         activityIndicator: {
             // Color, Size & All ViewStyle properties are allowed
