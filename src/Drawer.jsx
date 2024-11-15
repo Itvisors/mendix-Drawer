@@ -1,44 +1,43 @@
 import { Component, createElement } from "react";
 
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from "@mui/material/Drawer";
 
 export default class DrawerUI extends Component {
-    state = { showDrawer: false };
+    state = { updateDate: undefined };
 
-    componentDidUpdate () {
-      if (this.state.showDrawer !== this.props.showDrawer.value) {
-        this.setState({
-          showDrawer: this.props.showDrawer.value,
-        });
-      }
+    componentDidUpdate(prevProps) {
+        if (this.props.showDrawer.value !== prevProps.showDrawer.value) {
+            this.setState({ updateDate: new Date() });
+        }
     }
 
     onCloseNow = () => {
-      if (this.props.closeOnClickOutside) {
-        this.setState({
-          showDrawer: false,
-        });
-        if (this.props.showDrawer.readOnly) {
-          console.warn("User has no rights to change the attribute to close the drawer")
+        if (this.props.closeOnClickOutside) {
+            if (this.props.showDrawer.readOnly) {
+                console.warn("User has no rights to change the attribute to close the drawer");
+            }
+            this.props.showDrawer.setValue(false);
+            this.setState({ updateDate: new Date() });
         }
-        this.props.showDrawer.setValue(false);
-      }
-      if (this.props.onCloseAction && this.props.onCloseAction.canExecute) {
-        this.props.onCloseAction.execute();
-      }
+        if (this.props.onCloseAction && this.props.onCloseAction.canExecute) {
+            this.props.onCloseAction.execute();
+        }
     };
     render() {
-      return (
-        <div>
-          <Drawer
-            onClose={this.onCloseNow}
-            open={this.state.showDrawer}
-            anchor={this.props.anchor}
-            transitionDuration= {{enter:this.props.transitionDurationEnter,exit:this.props.transitionDurationClose}}
-          >
-            {this.props.content}
-          </Drawer>
-        </div>
-      );
+        return (
+            <div>
+                <Drawer
+                    onClose={this.onCloseNow}
+                    open={this.props.showDrawer.value}
+                    anchor={this.props.anchor}
+                    transitionDuration={{
+                        enter: this.props.transitionDurationEnter,
+                        exit: this.props.transitionDurationClose
+                    }}
+                >
+                    {this.props.content}
+                </Drawer>
+            </div>
+        );
     }
 }
